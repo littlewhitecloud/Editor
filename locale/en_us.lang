@@ -1,0 +1,18 @@
+version:1.1.0 --rebuild
+author:sadjok
+newfile:New File
+open:Open
+save:Save
+savetitle:Save
+saveas:Save as...
+viewfile:View File...
+clear:Clear
+quit:Quit
+filemenu:File
+undo:Undo
+cut:Cut
+copy:Copy
+paste:Paste
+edit:Edit
+refresh:Refresh
+editmenu:Edit
