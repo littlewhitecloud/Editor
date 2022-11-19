@@ -23,12 +23,13 @@ class ModuleMessagebox(Toplevel):
 		if not command:
 			self.command = self.destroy
 		self.font = font
-		
+		"""
 		if isDark():
 			self.change_title_bar(True)
 		else:
 			self.change_title_bar(False)
-			
+		"""
+		
 		self.setup(title, self.icon, resizeable)
 		self.load_image()
 		self.messagebox_setup()

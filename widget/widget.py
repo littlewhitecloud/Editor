@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter.ttk import Frame, Scrollbar, Sizegrip
+from tkinter.ttk import Frame, Scrollbar, Sizegrip, Button
 from PIL import Image, ImageTk
 from os import getcwd, getenv
 
@@ -91,6 +91,8 @@ class CrossTip(Frame):
 		systemroot = getenv("SYSTEMROOT") + "\\System32\\"
 		
 		self.icon = self.image = None
+		self.close = getcwd() + "\\widget\\" + "close.png"
+		self.msg = msg
 		if type == "showerror":
 			self.icon = systemroot + "SecurityAndMaintenance_Error.png"
 		elif type == "showwarning":
@@ -98,15 +100,23 @@ class CrossTip(Frame):
 		else:
 			self.icon = systemroot + "SecurityAndMaintenance.png"
 		
-		self.load_image()
-		self.picture = Label(self, image = self.image)
-		self.msg = Label(self, text = msg, height = 1)
-		
-		self.picture.pack(side = LEFT, fill = X, padx = 5)
-		self.msg.pack(side = LEFT, fill = X,padx = 10)
-		self.pack(side = TOP, fill = X)
+		master.after(100, self.image_setup()) # Wait a time for window prepare?
 	
-	def load_image(self):
+	def image_setup(self):
 		self.load = Image.open(self.icon)
 		self.load = self.load.resize((20, 20))
 		self.image = ImageTk.PhotoImage(self.load)
+		
+		self.close = Image.open(self.close)
+		self.close = self.close.resize((20, 20))
+		self._close = ImageTk.PhotoImage(self.close)
+		
+		self.picture = Label(self, image = self.image)
+		self.msg = Label(self, text = self.msg, height = 1)
+		self.close = Button(self,image = self._close, command = self.pack_forget)
+
+		self.picture.pack(side = LEFT, fill = X, padx = 5)
+		self.msg.pack(side = LEFT, fill = X, padx = 10)
+		self.close.pack(side = RIGHT, fill = X)
+		
+		self.pack(side = TOP, fill = X)

@@ -40,12 +40,11 @@ class Editor(Tk):
 		from sys import argv
 		self.setup("Editor", self.asset + "edit.ico", "975x525")
 		
-		CrossTip(self, "showwarning", "The Project is still in preview.")
 		hook_dropfiles(self, func = self.dragged_files)
 		
+		self.statusbar_setup()
 		self.editor_setup()
 		self.menu_setup()
-		self.statusbar_setup()
 		self.bind_setup()
 		
 		self.new_file()
@@ -55,7 +54,7 @@ class Editor(Tk):
 				self.open_file(_file = argv[1])
 		except:
 			showerror("Open File", "File Can't be open")
-			
+		CrossTip(self, "showwarning", "The Project is still in preview.")
 		#Window(background = "#53BF00")
 
 	# IO
@@ -136,7 +135,7 @@ class Editor(Tk):
 		self.scrollbarx.pack(side = RIGHT, fill = Y)
 		self.scrollbary.pack(side = BOTTOM, fill = X)
 		self.text.pack(fill = BOTH, expand = True)
-		self.textframe.pack(fill = BOTH, expand = True)	
+		self.textframe.pack(side = BOTTOM, fill = BOTH, expand = True)
 		
 	def statusbar_setup(self):
 		statusframe = Frame(self)

@@ -108,3 +108,4 @@ class Toplevel(Toplevel):
 		set_window_attribute(hwnd, rendering_policy, byref(value), sizeof(value))
 		self.update()
 		self.update()
+
