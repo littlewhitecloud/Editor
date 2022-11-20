@@ -12,3 +12,8 @@ rdbende's *Sun-Valley-ttk-theme*
 > #### Bugs
 > - [ ] the menu and the highlight was not black background. #1
 > - [ ] When the window resizing, CPU use is high. #2
+
+#### Future Ideas
+> GUI
+> - [x] Find GUI & Function 
+> - [ ] Font Select 
